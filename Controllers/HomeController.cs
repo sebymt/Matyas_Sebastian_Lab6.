@@ -32,6 +32,7 @@ namespace Matyas_Sebastian_Lab2.Controllers
             };
             return View(await data.AsNoTracking().ToListAsync());
         }
+
         private readonly ILogger<HomeController> _logger;
 
         public IActionResult Index()
