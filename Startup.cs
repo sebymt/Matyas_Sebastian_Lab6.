@@ -30,6 +30,7 @@ namespace Matyas_Sebastian_Lab2
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSignalR();
+            services.AddRazorPages();
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Lockout settings.
@@ -43,6 +44,11 @@ namespace Matyas_Sebastian_Lab2
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 8;
+            });
+            services.AddAuthorization(opts => {
+                opts.AddPolicy("OnlySales", policy => {
+                    policy.RequireClaim("Department", "Sales");
+                });
             });
         }
 

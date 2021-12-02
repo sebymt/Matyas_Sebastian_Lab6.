@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Matyas_Sebastian_Lab2.Data;
 using Matyas_Sebastian_Lab2.Models;
 using Matyas_Sebastian_Lab2.Models.LibraryViewModels;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Matyas_Sebastian_Lab2.Controllers
 {
+    [Authorize(Policy = "OnlySales")]
     public class PublishersController : Controller
     {
         private readonly LibraryContext _context;
-
         public PublishersController(LibraryContext context)
         {
             _context = context;
