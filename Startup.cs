@@ -37,8 +37,8 @@ namespace Matyas_Sebastian_Lab2
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.AllowedForNewUsers = true;
-            });
-            services.Configure<IdentityOptions>(options => { // Default Password settings.
+
+                // Default Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = true;
