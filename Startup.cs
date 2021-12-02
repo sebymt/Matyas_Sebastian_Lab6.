@@ -50,6 +50,17 @@ namespace Matyas_Sebastian_Lab2
                     policy.RequireClaim("Department", "Sales");
                 });
             });
+            services.AddAuthorization(opts => {
+                opts.AddPolicy("SalesManager", policy => {
+                    policy.RequireRole("Manager");
+                    policy.RequireClaim("Department", "Sales");
+                });
+            });
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.AccessDeniedPath = "/Identity/Account/AccessDenied";
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
